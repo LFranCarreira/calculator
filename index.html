@@ -142,9 +142,18 @@ function sin() {
 }
 
 
-
 	function cos(){
-	document.calcul.result.value=Math.cos(document.calcul.result.value);
+    var angleInDegrees = parseFloat(document.calcul.result.value);
+    var angleInRadians = angleInDegrees * (Math.PI / 180);
+    var cosResult = Math.cos(angleInRadians);
+    if(Math.abs(cosResult) < 1e-15){
+      cosResult=0;
+    }
+    if(cosResult.toFixed(5)-cosResult.toFixed()===0){cosResult=cosResult.toFixed()}
+        else{
+          cosResult=cosResult.toFixed(5)
+        }
+	document.calcul.result.value=cosResult
 	}
 
   function tan() {
