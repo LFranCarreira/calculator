@@ -160,9 +160,12 @@ function sin() {
         var tanResult = Math.tan(angleInRadians);
 
         // Redondea el resultado a un número con un número limitado de decimales
-        var roundedResult = tanResult.toFixed(6);
-        if(roundedResult[2,3,4,5,6]===0){roundedResult=tanResult.toFixed()}
-
+        var roundedResult = 0;
+        if(tanResult.toFixed(5)-tanResult.toFixed()===0){roundedResult=tanResult.toFixed()}
+        else{
+          roundedResult=tanResult.toFixed(5)
+        }
+        if(roundedResult==="-0"){roundedResult=0}
         document.calcul.result.value = roundedResult;
     }
   }
