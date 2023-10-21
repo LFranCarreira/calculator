@@ -84,14 +84,15 @@ button:hover{
 		<td><button type="button" value="x^2" onclick="square()"> x<sup>2 </button> </td>
 		<td><button type="button" value="x^3" onclick="cubed()"> x<sup>3 </button> </td>
 		<td><button type="button" value="sqrt2" onclick="sqrt2()"> &radic; </button> </td>
-		<td><button type="button" value="sqrt3" onclick="sqrt3()"> &#8731; </button> </td>
+        <td><button type="button" value="BACKSPC" class="clear" onclick="BACKSPC()"> < </button> </td>
 	</tr>
 
 	<tr>
 		<td><button type="button" value="1" onclick="number(value)"> 1 </button> </td>
 		<td><button type="button" value="2" onclick="number(value)"> 2 </button> </td>
 		<td><button type="button" value="3" onclick="number(value)"> 3 </button> </td>
-		<td><button type="button" value="BACKSPC" class="clear" onclick="BACKSPC()"> < </button> </td>
+		<td><button type="button" value="sqrt3" onclick="sqrt3()"> &#8731; </button> </td>
+
 	</tr>
 
 	<tr>
@@ -105,19 +106,18 @@ button:hover{
 		<td><button type="button" value="7" onclick="number(value)"> 7 </button> </td>
 		<td><button type="button" value="8" onclick="number(value)"> 8 </button> </td>
 		<td><button type="button" value="9" onclick="number(value)"> 9 </button> </td>
-		<td><button type="button" value="/" onclick="number(value)"> / </button> </td>
+		<td><button type="button" value="+" onclick="number(value)"> + </button> </td>
 	</tr>
 
 	<tr>
 		<td><button type="button" value="." onclick="number(value)"> . </button> </td>
 		<td><button type="button" value="0" onclick="number(value)"> 0 </button> </td>
 		<td><button type="button" value="*" onclick="number(value)"> * </button> </td>
-		<td><button type="button" value="%" onclick="number(value)"> % </button> </td>
-	</tr>
+		<td><button type="button" value="/" onclick="number(value)"> / </button> </td>
+    </tr>
 
 	<tr>
-		<td colspan="2"> <button type="button" value="=" onclick="equal()" class="equal">=</button> </td>
-		<td><button type="button" value="+" onclick="number(value)"> + </button> </td>
+		<td colspan="4"> <button type="button" value="=" onclick="equal()" class="equal">=</button> </td>
 	</tr>
 
 </table>
@@ -125,15 +125,13 @@ button:hover{
 
 
 <script>
+
 function sin() {
-    // Convierte el ángulo de grados a radianes (π radianes = 180 grados)
     var angleInDegrees = parseFloat(document.calcul.result.value);
     var angleInRadians = angleInDegrees * (Math.PI / 180);
 
-    // Calcula el seno del ángulo en radianes
     var sinResult = Math.sin(angleInRadians);
 
-    // Redondea el resultado a un valor cercano a cero si es muy pequeño
     if (Math.abs(sinResult) < 1e-15) {
         sinResult = 0;
     }
@@ -157,18 +155,14 @@ function sin() {
 	}
 
   function tan() {
-    // Convierte el ángulo de grados a radianes (π radianes = 180 grados)
     var angleInDegrees = parseFloat(document.calcul.result.value);
     var angleInRadians = angleInDegrees * (Math.PI / 180);
 
-    // Verifica si el ángulo es igual a 90 grados (π/2 radianes)
     if (angleInRadians === Math.PI / 2) {
-        document.calcul.result.value = "Error"; // Muestra un mensaje de error
+        document.calcul.result.value = "Error"; 
     } else {
-        // Calcula la tangente del ángulo en radianes
         var tanResult = Math.tan(angleInRadians);
 
-        // Redondea el resultado a un número con un número limitado de decimales
         var roundedResult = 0;
         if(tanResult.toFixed(5)-tanResult.toFixed()===0){roundedResult=tanResult.toFixed()}
         else{
