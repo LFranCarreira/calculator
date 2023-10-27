@@ -1,248 +1,333 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        body {
-            margin: 0;
-            background: linear-gradient(to bottom, #1e8fa5, #08506b, black) no-repeat fixed;
-            padding: 50px 0px;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-        }
+      body {
+        margin: 0;
+        background: linear-gradient(to bottom, #1e8fa5, #08506b, black)
+          no-repeat fixed;
+        padding: 50px 0px;
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+      }
 
+      table {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        border: none;
+        text-align: center;
+        box-shadow: 0px 0px 15px rgba(13, 85, 105, 0.7);
+        border-radius: 10px;
+        width: 100%;
+      }
+
+      button {
+        padding: 10px 20px;
+        width: 80px;
+        height: 60px;
+        margin: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+        background: #2e2e2e;
+        border: none;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      /* Media queries for adjusting height, width, and max-width */
+      @media (max-height: 750px) {
         table {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border: none;
-            text-align: center;
-            box-shadow: 0px 0px 15px rgba(13, 85, 105, 0.7);
-            border-radius: 10px;
-            width: 100%;
+          height: 60vh; /* Ajusta la altura en dispositivos con una altura menor a 750px */
         }
+      }
 
-        button {
-            padding: 10px 20px;
-            width: 80px;
-            height: 60px;
-            margin: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            font-family: 'Arial', sans-serif;
-            background: #2e2e2e;
-            border: none;
-            color: #fff;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
+      @media (max-width: 460px) {
+        table {
+          width: 80%; /* Ajusta el ancho en dispositivos con un ancho menor a 460px */
         }
+      }
 
-        /* Media queries for adjusting height, width, and max-width */
-        @media (max-height: 750px) {
-            table {
-                height: 60vh; /* Ajusta la altura en dispositivos con una altura menor a 750px */
-            }
+      @media (min-width: 800px) {
+        table {
+          max-width: 600px; /* Establece un ancho máximo para pantallas más grandes */
+          margin: 0 auto;
         }
+      }
 
-        @media (max-width: 460px) {
-            table {
-                width: 80%; /* Ajusta el ancho en dispositivos con un ancho menor a 460px */
-            }
-        }
+      button.clear {
+        background: #ff5722;
+      }
 
-        @media (min-width: 800px) {
-            table {
-                max-width: 600px; /* Establece un ancho máximo para pantallas más grandes */
-                margin: 0 auto;
-            }
-        }
+      button.equal {
+        width: 88%;
+        background: #210b04;
+      }
 
-        button.clear {
-            background: #FF5722;
-        }
+      button:hover {
+        background: #000803;
+      }
 
-        button.equal {
-            width: 88%;
-            background: #210b04;
-        }
-
-        button:hover {
-            background: #000803;
-        }
-
-        input[type="text"] {
-            width: 90%;
-            height: 81px;
-            border: 1px solid #000;
-            padding: 10px 20px;
-            font-size: 36px;
-            background: rgba(0, 0, 0, 0.8);
-            font-weight: bold;
-            margin: 15px auto;
-            color: #dedede;
-            border-bottom: 2px solid #cc4014;
-            border-radius: 5px;
-        }
+      input[type='text'] {
+        width: 90%;
+        height: 81px;
+        border: 1px solid #000;
+        padding: 10px 20px;
+        font-size: 36px;
+        background: rgba(0, 0, 0, 0.8);
+        font-weight: bold;
+        margin: 15px auto;
+        color: #dedede;
+        border-bottom: 2px solid #cc4014;
+        border-radius: 5px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <form name="calcul">
-        <table>
-            <tr>
-                <td colspan="4">
-                    <input type="text" name="result" placeholder="0" style="text-align: right" onkeydown="if (event.key === 'Enter') equal()">
-                </td>
-            </tr>
+      <table>
+        <tr>
+          <td colspan="4">
+            <input
+              type="text"
+              name="result"
+              placeholder="0"
+              style="text-align: right"
+              onkeydown="if (event.key === 'Enter') equal()"
+            />
+          </td>
+        </tr>
 
-            <tr>
-                <td><button type="button" value="sin" onclick="sin()">sin</button></td>
-                <td><button type="button" value="cos" onclick="cos()">cos</button></td>
-                <td><button type="button" value="tan" onclick="tan()">tan</button></td>
-                <td><button type="button" value="C" class="clear" onclick="remv()">C</button></td>
-            </tr>
+        <tr>
+          <td>
+            <button type="button" value="sin" onclick="sin()">sin</button>
+          </td>
+          <td>
+            <button type="button" value="cos" onclick="cos()">cos</button>
+          </td>
+          <td>
+            <button type="button" value="tan" onclick="tan()">tan</button>
+          </td>
+          <td>
+            <button type="button" value="C" class="clear" onclick="remv()">
+              C
+            </button>
+          </td>
+        </tr>
 
-            <tr>
-                <td><button type="button" value="x^2" onclick="square()">x<sup>2</sup></button></td>
-                <td><button type="button" value="x^3" onclick="cubed()">x<sup>3</sup></button></td>
-                <td><button type="button" value="sqrt2" onclick="sqrt2()">&radic;</button></td>
-                <td><button type="button" value="BACKSPC" class="clear" onclick="BACKSPC()"><</button></td>
-            </tr>
+        <tr>
+          <td>
+            <button type="button" value="x^2" onclick="square()">
+              x<sup>2</sup>
+            </button>
+          </td>
+          <td>
+            <button type="button" value="x^3" onclick="cubed()">
+              x<sup>3</sup>
+            </button>
+          </td>
+          <td>
+            <button type="button" value="sqrt2" onclick="sqrt2()">
+              &radic;
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              value="BACKSPC"
+              class="clear"
+              onclick="BACKSPC()"
+            >
+              <
+            </button>
+          </td>
+        </tr>
 
-            <tr>
-                <td><button type="button" value="1" onclick="number(value)">1</button></td>
-                <td><button type="button" value="2" onclick="number(value)">2</button></td>
-                <td><button type="button" value="3" onclick="number(value)">3</button></td>
-                <td><button type="button" value="sqrt3" onclick="sqrt3()">&#8731;</button></td>
-            </tr>
+        <tr>
+          <td>
+            <button type="button" value="1" onclick="number(value)">1</button>
+          </td>
+          <td>
+            <button type="button" value="2" onclick="number(value)">2</button>
+          </td>
+          <td>
+            <button type="button" value="3" onclick="number(value)">3</button>
+          </td>
+          <td>
+            <button type="button" value="sqrt3" onclick="sqrt3()">
+              &#8731;
+            </button>
+          </td>
+        </tr>
 
-            <tr>
-                <td><button type="button" value="4" onclick="number(value)">4</button></td>
-                <td><button type="button" value="5" onclick="number(value)">5</button></td>
-                <td><button type="button" value="6" onclick="number(value)">6</button></td>
-                <td><button type="button" value="-" onclick="number(value)">-</button></td>
-            </tr>
+        <tr>
+          <td>
+            <button type="button" value="4" onclick="number(value)">4</button>
+          </td>
+          <td>
+            <button type="button" value="5" onclick="number(value)">5</button>
+          </td>
+          <td>
+            <button type="button" value="6" onclick="number(value)">6</button>
+          </td>
+          <td>
+            <button type="button" value="-" onclick="number(value)">-</button>
+          </td>
+        </tr>
 
-            <tr>
-                <td><button type="button" value="7" onclick="number(value)">7</button></td>
-                <td><button type="button" value="8" onclick="number(value)">8</button></td>
-                <td><button type="button" value="9" onclick="number(value)">9</button></td>
-                <td><button type="button" value="+" onclick="number(value)">+</button></td>
-            </tr>
+        <tr>
+          <td>
+            <button type="button" value="7" onclick="number(value)">7</button>
+          </td>
+          <td>
+            <button type="button" value="8" onclick="number(value)">8</button>
+          </td>
+          <td>
+            <button type="button" value="9" onclick="number(value)">9</button>
+          </td>
+          <td>
+            <button type="button" value="+" onclick="number(value)">+</button>
+          </td>
+        </tr>
 
-            <tr>
-                <td><button type="button" value="." onclick="number(value)">.</button></td>
-                <td><button type="button" value="0" onclick="number(value)">0</button></td>
-                <td><button type="button" value="*" onclick="number(value)">*</button></td>
-                <td><button type="button" value="/" onclick="number(value)">/</button></td>
-            </tr>
+        <tr>
+          <td>
+            <button type="button" value="." onclick="number(value)">.</button>
+          </td>
+          <td>
+            <button type="button" value="0" onclick="number(value)">0</button>
+          </td>
+          <td>
+            <button type="button" value="*" onclick="number(value)">*</button>
+          </td>
+          <td>
+            <button type="button" value="/" onclick="number(value)">/</button>
+          </td>
+        </tr>
 
-            <tr>
-                <td colspan="4">
-                    <button type="button" value="=" onclick="equal()" class="equal">=</button>
-                </td>
-            </tr>
-        </table>
+        <tr>
+          <td colspan="4">
+            <button type="button" value="=" onclick="equal()" class="equal">
+              =
+            </button>
+          </td>
+        </tr>
+      </table>
     </form>
 
+    <script>
+      // Obtener el valor del parámetro 'result' de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const resultValue = urlParams.get('result');
 
-<script>
-// Obtener el valor del parámetro 'result' de la URL
-const urlParams = new URLSearchParams(window.location.search);
-const resultValue = urlParams.get('result');
+      // Asignar el valor de 'result' al campo de texto
+      document.calcul.result.value = resultValue;
 
-// Asignar el valor de 'result' al campo de texto
-document.calcul.result.value = resultValue;
+      function sin() {
+        var angleInDegrees = parseFloat(document.calcul.result.value);
+        var angleInRadians = angleInDegrees * (Math.PI / 180);
 
-function sin() {
-    var angleInDegrees = parseFloat(document.calcul.result.value);
-    var angleInRadians = angleInDegrees * (Math.PI / 180);
+        var sinResult = Math.sin(angleInRadians);
 
-    var sinResult = Math.sin(angleInRadians);
-
-    if (Math.abs(sinResult) < 1e-15) {
-        sinResult = 0;
-    }
-
-    document.calcul.result.value = sinResult;
-}
-
-
-	function cos(){
-    var angleInDegrees = parseFloat(document.calcul.result.value);
-    var angleInRadians = angleInDegrees * (Math.PI / 180);
-    var cosResult = Math.cos(angleInRadians);
-    if(Math.abs(cosResult) < 1e-15){
-      cosResult=0;
-    }
-    if(cosResult.toFixed(5)-cosResult.toFixed()===0){cosResult=cosResult.toFixed()}
-        else{
-          cosResult=cosResult.toFixed(5)
+        if (Math.abs(sinResult) < 1e-15) {
+          sinResult = 0;
         }
-	document.calcul.result.value=cosResult
-	}
 
-  function tan() {
-    var angleInDegrees = parseFloat(document.calcul.result.value);
-    var angleInRadians = angleInDegrees * (Math.PI / 180);
+        document.calcul.result.value = sinResult;
+      }
 
-    if (angleInRadians === Math.PI / 2) {
-        document.calcul.result.value = "Error"; 
-    } else {
-        var tanResult = Math.tan(angleInRadians);
-
-        var roundedResult = 0;
-        if(tanResult.toFixed(5)-tanResult.toFixed()===0){roundedResult=tanResult.toFixed()}
-        else{
-          roundedResult=tanResult.toFixed(5)
+      function cos() {
+        var angleInDegrees = parseFloat(document.calcul.result.value);
+        var angleInRadians = angleInDegrees * (Math.PI / 180);
+        var cosResult = Math.cos(angleInRadians);
+        if (Math.abs(cosResult) < 1e-15) {
+          cosResult = 0;
         }
-        if(roundedResult==="-0"){roundedResult=0}
-        document.calcul.result.value = roundedResult;
-    }
-  }
+        if (cosResult.toFixed(5) - cosResult.toFixed() === 0) {
+          cosResult = cosResult.toFixed();
+        } else {
+          cosResult = cosResult.toFixed(5);
+        }
+        document.calcul.result.value = cosResult;
+      }
 
+      function tan() {
+        var angleInDegrees = parseFloat(document.calcul.result.value);
+        var angleInRadians = angleInDegrees * (Math.PI / 180);
 
+        if (angleInRadians === Math.PI / 2) {
+          document.calcul.result.value = 'Error';
+        } else {
+          var tanResult = Math.tan(angleInRadians);
 
+          var roundedResult = 0;
+          if (tanResult.toFixed(5) - tanResult.toFixed() === 0) {
+            roundedResult = tanResult.toFixed();
+          } else {
+            roundedResult = tanResult.toFixed(5);
+          }
+          if (roundedResult === '-0') {
+            roundedResult = 0;
+          }
+          document.calcul.result.value = roundedResult;
+        }
+      }
 
-	function BACKSPC(){
-	var a = document.calcul.result.value;
-	document.calcul.result.value = a.substr(0, a.length-1);
-	}
+      function BACKSPC() {
+        var a = document.calcul.result.value;
+        document.calcul.result.value = a.substr(0, a.length - 1);
+      }
 
-	function square(){
-	document.calcul.result.value = Math.pow(document.calcul.result.value, 2);
-	}
+      function square() {
+        document.calcul.result.value = Math.pow(
+          document.calcul.result.value,
+          2
+        );
+      }
 
-	function cubed(){
-	document.calcul.result.value = Math.pow(document.calcul.result.value, 3);
-	}
+      function cubed() {
+        document.calcul.result.value = Math.pow(
+          document.calcul.result.value,
+          3
+        );
+      }
 
-	function sqrt2(){
-	document.calcul.result.value = Math.pow(document.calcul.result.value, 1/2);
-	}
+      function sqrt2() {
+        document.calcul.result.value = Math.pow(
+          document.calcul.result.value,
+          1 / 2
+        );
+      }
 
-	function sqrt3(){
-	document.calcul.result.value = Math.pow(document.calcul.result.value, 1/3);
-	}
+      function sqrt3() {
+        document.calcul.result.value = Math.pow(
+          document.calcul.result.value,
+          1 / 3
+        );
+      }
 
-	function number(value){
-	document.calcul.result.value += value;
-	}
+      function number(value) {
+        document.calcul.result.value += value;
+      }
 
-	function remv(){
-	document.calcul.result.value=" ";
-	}
+      function remv() {
+        document.calcul.result.value = ' ';
+      }
 
-    function equal() {
-    var expression = document.calcul.result.value;
-    var result = eval(expression);
+      function equal() {
+        var expression = document.calcul.result.value;
+        var result = eval(expression);
 
-    if (result !== undefined) {
-        document.calcul.result.value = result;
-    } else {
-        document.calcul.result.value = "Error";
-    }
-}
-</script>
-</body>
+        if (result !== undefined) {
+          document.calcul.result.value = result;
+        } else {
+          document.calcul.result.value = 'Error';
+        }
+      }
+    </script>
+  </body>
 </html>
