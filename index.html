@@ -147,6 +147,12 @@
 
 
 <script>
+// Obtener el valor del parámetro 'result' de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const resultValue = urlParams.get('result');
+
+// Asignar el valor de 'result' al campo de texto
+document.calcul.result.value = resultValue;
 
 function sin() {
     var angleInDegrees = parseFloat(document.calcul.result.value);
@@ -227,9 +233,16 @@ function sin() {
 	document.calcul.result.value=" ";
 	}
 
-	function equal(){
-	document.calcul.result.value=eval(document.calcul.result.value);
-	}
+    function equal() {
+    var expression = document.calcul.result.value;
+    var result = eval(expression);
+
+    if (result !== undefined) {
+        document.calcul.result.value = result;
+    } else {
+        document.calcul.result.value = "Error";
+    }
+}
 </script>
 </body>
 </html>
